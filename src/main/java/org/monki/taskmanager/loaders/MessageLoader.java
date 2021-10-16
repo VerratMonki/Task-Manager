@@ -17,6 +17,11 @@ public class MessageLoader implements MessageRepository<Message> {
     @Autowired
     private MessageRepository<Message> messageRepository;
 
+    /**
+     * Returns a meesage from repository by its id.
+     * @param messageId
+     * @return a record representing a message
+     */
     public Message getMessageById(Long messageId) {
         Message message = messageRepository.findById(messageId).orElseThrow(IllegalArgumentException::new);
         return new Message(message.getText());
